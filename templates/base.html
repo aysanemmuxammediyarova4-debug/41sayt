@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>OshXona — Taomlar va Yetkazib Berish Portali</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>🍕 OshXona Express</h1>
+        <nav>
+            <a href="{{ url_for('index') }}">Barcha taomlar</a>
+            <a href="{{ url_for('index', category='Milliy') }}">Milliy taomlar</a>
+            <a href="{{ url_for('index', category='Fast Food') }}">Fast Food</a>
+            <a href="{{ url_for('index', category='Osiyo') }}">Osiyo oshxonasi</a>
+            <a href="{{ url_for('index', category='Desert') }}">Shirinliklar</a>
+            <a href="{{ url_for('add_food') }}" class="add-btn">+ Taom qo'shish</a>
+        </nav>
+    </header>
+    <hr>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

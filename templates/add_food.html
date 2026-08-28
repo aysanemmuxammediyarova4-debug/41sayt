@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Yangi taom qo'shish</h2>
+<form method="POST">
+    <input type="text" name="title" placeholder="Masalan: Oshpazlik Palov 1 porsiya" required><br><br>
+    <input type="text" name="restaurant" placeholder="Restoran yoki Kafe nomi" required><br><br>
+    
+    <select name="category" required>
+        <option value="">Oshxona turini tanlang</option>
+        <option value="Milliy">Milliy taomlar</option>
+        <option value="Fast Food">Fast Food (Burger, Lavash, Pitssa)</option>
+        <option value="Osiyo">Osiyo oshxonasi (Sushi, Ramen)</option>
+        <option value="Desert">Shirinliklar va Ichimliklar</option>
+        <option value="Boshqa">Boshqa</option>
+    </select><br><br>
+
+    <input type="number" name="prep_time" placeholder="Tayyorlanish vaqti (daqiqada)" required><br><br>
+    <input type="number" name="price" placeholder="Narxi (so'mda)" step="1000" required><br><br>
+    <input type="text" name="contact_phone" placeholder="Restoran telefon raqami" required><br><br>
+    <input type="url" name="image_url" placeholder="Taom rasmi (URL)" required><br><br>
+    <textarea name="description" rows="5" placeholder="Masalliqlar ro'yxati va taom haqida ma'lumot..." required></textarea><br><br>
+    
+    <button type="submit" class="btn">Taomni menyuga qo'shish</button>
+</form>
+{% endblock %}

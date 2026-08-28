@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="detail-container">
+    <div class="title-header">
+        <h2>{{ food.title }}</h2>
+        <span class="category-badge">{{ food.category }}</span>
+    </div>
+    
+    <img src="{{ food.image_url }}" class="main-img">
+    
+    <div class="specs-grid">
+        <p>🏪 <strong>Restoran:</strong> {{ food.restaurant }}</p>
+        <p>⏱️ <strong>Tayyorlanishi:</strong> {{ food.prep_time }} min</p>
+        <p>📞 <strong>Restoran teli:</strong> {{ food.contact_phone }}</p>
+        <p>💰 <strong>Narxi:</strong> {{ "{:,.0f}".format(food.price) }} so'm</p>
+    </div>
+
+    <hr>
+
+    <h3>📝 Masalliqlar va taom tavsifi:</h3>
+    <p class="formatted-text">{{ food.description }}</p>
+
+    <hr>
+
+    {% if success %}
+    <div class="success-box">
+        🎉 <strong>Buyurtmangiz qabul qilindi!</strong>
+        <p>Jami summangiz: <strong>{{ "{:,.0f}".format(total_price) }} so'm</strong>.</p>
+        <p>Kuryer {{ order.address }} manziliga yetkazish uchun {{ order.phone }} raqamiga bog'lanadi.</p>
+    </div>
+    {% else %}
+    <h3>Taomni yetkazib berishga buyurtma qilish</h3>
+    <form method="POST">
+        <input type="text" name="customer_name" placeholder="Ismingiz" required><br><br>
+        <input type="text" name="phone" placeholder="Telefon raqamingiz" required><br><br>
+        <input type="text" name="address" placeholder="Yetkazib berish manzili" required><br><br>
+        <label for="quantity">Soni:</label>
+        <input type="number" id="quantity" name="quantity" value="1" min="1" max="20" style="width: 80px;" required><br><br>
+        <button type="submit" class="btn">Buyurtmani tasdiqlash</button>
+    </form>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="search-bar">
+    <form method="GET" action="{{ url_for('index') }}">
+        <input type="text" name="search" placeholder="Taom yoki restoran nomi..." value="{{ search if search else '' }}">
+        <button type="submit" class="btn">Qidirish</button>
+    </form>
+</div>
+
+<h2>
+    {% if selected_category %}{{ selected_category }} bo'limi{% else %}Barcha taomlar{% endif %}
+</h2>
+
+<div class="food-grid">
+    {% for food in foods %}
+    <div class="card">
+        <div class="image-wrapper">
+            <img src="{{ food.image_url }}" alt="{{ food.title }}">
+            <span class="category-badge">{{ food.category }}</span>
+        </div>
+        <div class="card-body">
+            <h3>{{ food.title }}</h3>
+            <p>🏪 <strong>Restoran:</strong> {{ food.restaurant }}</p>
+            <p>⏱️ <strong>Tayyorlanish:</strong> ~{{ food.prep_time }} daqiqa</p>
+            <p class="price">{{ "{:,.0f}".format(food.price) }} so'm</p>
+            <a href="{{ url_for('food_detail', food_id=food.id) }}" class="btn">Buyurtma berish</a>
+        </div>
+    </div>
+    {% else %}
+    <p>Hozircha taomlar topilmadi.</p>
+    {% endfor %}
+</div>
+{% endblock %}
